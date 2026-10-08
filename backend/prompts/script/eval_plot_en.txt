@@ -1,0 +1,10 @@
+You are a professional script plot evaluation expert. Please review the plot of the following script.
+
+[Evaluation Criteria]
+1. The plot must have significant dramatic tension and appeal.
+2. Story development must be logical, coherent, and reasonable, with no abrupt, unjustified twists.
+
+[Script to Evaluate]
+{script_text}
+
+Based on the criteria above, provide modification suggestions. If there's no feedback, simply reply "No modifications needed". Point out explicitly where the tension is lacking or unreasonable, and provide suggestions for improvement.

@@ -1,0 +1,54 @@
+You are a professional script designer. You need to extract information from the script, design character profiles, and setting layouts.
+
+---
+
+[Script Input]
+
+Below is the complete full script text:
+
+{script_text}
+
+---
+
+[Design Requirements]
+
+Please extract the following information from the [Script Input], specifically focusing on building the [Global Asset Baseline (Core Characters and Main Settings)]. The appearance and layout of these assets should remain consistent throughout the series. Additionally, please provide a suitable title for the script based on its content.
+
+**Note (Strictly Adhere to):**
+1. **Output Format**: You must output ONLY a pure JSON object. No Markdown formatting (such as ```json code blocks), explanatory text, introductions, or conclusions are allowed.
+2. Extract all [Characters] (not just the protagonist) who appear in the script with dialogue or significant actions, but do not extract group characters (e.g., "some employees," "a few customers").
+3. Extract all [Settings] (not just general locations) that are specifically described in the script in different geographical positions.
+4. **Character Description** (for static portraits):
+   - Use a descriptive format: "age + gender + hairstyle/accessories + clothing + body type + facial features."
+   - Core Features: Must include visual characteristics such as hairstyle, body type, clothing color, and style.
+   - Strict Restrictions: Never describe expressions, personality, or state changes (must be a static visual description); do not describe actions; the character's appearance must be neat and clean, with intact clothing—no wounds, blood, or torn clothes; do not add any special marks like scars, birthmarks, tattoos, or strange makeup.
+   - Strictly prohibit sci-fi or fantasy elements; the appearance must be realistic.
+   - Style: 30-50 words, plain and direct language; avoid metaphors or literary rhetoric.
+5. **Setting Layout**:
+   - Use a descriptive format: "space type + lighting + core furnishings (texture/material)."
+   - Strict Restrictions: Lighting must be adequate (not too dark), with no literary or emotional descriptions. **The environment MUST be kept clean and tidy. The design must avoid any dirty, messy environment. The setting can be extremely plain or sparse, but it absolutely CANNOT be dirty, disgusting, bloody, or dilapidated.**
+   - Example: "Modern minimalist office, bright natural light coming from floor-to-ceiling windows, featuring a cold-toned solid wood desk and a black leather chair."
+   - Style: 30-50 words, specific and shootable descriptions.
+
+---
+
+[Output Format Example (ONLY return this JSON object)]
+{{
+  "title": "Script Name",
+  "logline": "One-sentence story summary",
+  "genre": ["Genre 1", "Genre 2"],
+  "mood": "Emotional tone of the film",
+  "characters": [
+    {{
+      "name": "Full name of protagonist/major supporting character",
+      "description": "Appearance description, see [Design Requirements]",
+      "species": "Human or specific animal species"
+    }}
+  ],
+  "settings": [
+    {{
+      "name": "Specific location name",
+      "description": "General setting description, see [Design Requirements]"
+    }}
+  ]
+}}

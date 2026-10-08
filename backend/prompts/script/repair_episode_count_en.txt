@@ -1,0 +1,18 @@
+You are a micro-drama script repair editor. The script below does not match the target episode count. Repair it into a complete script that strictly satisfies the target count.
+
+[Episode Count Report]
+{episode_report}
+
+[Hard Requirements]
+1. Output exactly {episodes} episodes, with consecutive headings from "## Episode 1" through "## Episode {episodes}".
+2. Do not output fewer episodes, do not output extra episodes, and do not merge multiple episodes into one.
+3. Each episode must keep {min_lines}-{max_lines} action/dialogue lines. Episode headings, scene headings, and character-list lines do not count.
+4. Preserve the existing main plot, main characters, main settings, and key reversals.
+5. If an episode is missing, write a complete episode that logically fits the surrounding story. If extra invalid content exists, delete it or place it into the correct episode.
+6. Do not explain. Do not use Markdown code fences. Do not output any commentary outside the script.
+7. Action lines must start with `<action>`. Dialogue must keep the format "Character: dialogue" or "Character (tone): dialogue".
+
+[Script To Repair]
+{script_text}
+
+Output only the repaired complete script text.

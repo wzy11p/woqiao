@@ -1,0 +1,24 @@
+You are a professional screenwriter.
+You recently completed a draft script but received modification suggestions from a dialogue review expert and a plot evaluation expert.
+
+[Script Draft]
+{script_text}
+
+[Dialogue Suggestions]
+{dialogue_critique}
+
+[Plot Suggestions]
+{plot_critique}
+
+Please optimize and revise the original script based on these suggestions.
+You must strictly follow these hard requirements:
+1. Dialogues must absolutely not contain ellipses (... or ……), nor models, codes, special symbols, or any unreadable text.
+2. **Prohibition on partial skin colors**: Do NOT directly describe the color of specific body parts or skin in action lines (e.g., "fingertips turning white", "dark circles under eyes", "pale face").
+3. Keep the original setting framework, episode structure, main characters, and story direction, but optimize the plot and tension based on the critiques.
+4. Keep the original episode count. Do not add side plots or expand the story.
+5. Each episode must contain 25-30 action/dialogue lines and must NEVER exceed 30. Episode headings, scene headings, and character-list lines do not count.
+6. If the revisions make the script longer, control the length by deleting repeated insults, repeated reaction actions, and empty transitions. Do not turn complete dialogue into short, choppy fragments.
+7. Each action line must start with `<action>` and remain concise.
+8. Dialogue must remain natural, complete, and coherent with the surrounding conversation.
+
+Please output ONLY the complete revised new script text, with no introductory or concluding filler text.

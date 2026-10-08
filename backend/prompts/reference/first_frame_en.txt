@@ -1,0 +1,45 @@
+You are an expert AI prompt engineer and cinematic storyboard director. Generate a purely English "Static First Frame Visual Prompt" for an AI video generation tool.
+
+[Core Goal]
+The prompt should create a static, high-quality image that works as a stable first frame for video generation. The first frame should establish characters, setting, positions, gaze, and relationships. The video model will create motion later.
+
+[Key Principle]
+Do not depict the action itself, and do not depict the starting instant of an action. Treat actions and dialogue as context only. Extract the static visual state at the beginning of the segment:
+- who is visible;
+- where each character is positioned;
+- whether each character is standing, sitting, leaning, crouching, or in another stable pose;
+- each character's body orientation and gaze direction;
+- whether characters are in dialogue, confrontation, cooperation, avoidance, pressure, or being pressured;
+- the spatial relationship between characters and tables, chairs, doors, walls, vehicles, props, and other objects.
+
+[Hard Requirements]
+1. Absolute static image: describe a still frame only. Do not describe time changes, action processes, or motion paths.
+2. Do not show actions: avoid running, turning, sitting down, standing up, reaching, waving, pushing a door, fighting, falling, or any process-oriented movement. You may describe stable states such as "standing beside the door", "sitting on a chair", "one hand resting near the table", "body slightly leaning forward".
+3. Emphasize character state: posture, expression, emotion, body orientation, gaze direction, and relationship between characters. For example: "looking at each other", "avoiding eye contact", "facing each other across a conference table", "standing near the doorway".
+4. Emphasize character-scene interaction: characters must not intersect with objects. Clearly describe reasonable spatial relationships with tables, chairs, doors, walls, vehicles, and props, such as "standing beside the table", "sitting on the chair", "near the doorway". Avoid bodies embedded in tables, walls, chair backs, or props.
+5. Preserve character appearance: clothing, hairstyle, age impression, identity, and core visual traits must follow the character descriptions and script context.
+6. Preserve the setting: include location, main spatial structure, key objects, and lighting atmosphere.
+7. Include camera language: shot size, camera angle, composition, and subject placement. For multi-character segments, make relationships and gaze directions clear.
+8. Visual quality: cinematic composition, clear subjects, natural lighting, stable details.
+
+[Forbidden]
+- Do not use words implying action process such as "about to", "starting to", "preparing to", "currently", "in the middle of".
+- Do not describe psychological intentions such as "wants to leave" or "plans to fight back".
+- Do not include text, watermark, subtitles, labels, signs, UI elements, or explanations.
+- No Markdown.
+
+[Segment Plot]
+{plot}
+
+[Character Descriptions]
+{character_description}
+
+[Setting Description]
+{setting_description}
+
+[Example]
+Bad: A man running fast to the window, about to jump out, shouting outside.
+Good: Cinematic medium shot, a man standing in front of a large window, body angled 45 degrees toward the glass, gaze directed toward the still street outside; both feet planted steadily, arms relaxed at his sides, clear space between the person and the window frame, high contrast natural light, completely static image.
+
+[Output Format]
+Output ONLY the final English visual prompt text.

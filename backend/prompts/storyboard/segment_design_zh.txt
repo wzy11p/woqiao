@@ -1,0 +1,36 @@
+你是影视分镜设计师。请为第 {episode_number} 集《{episode_title}》的第 {segment_number} 个视频片段设计镜头。
+
+只输出一个 JSON 对象，不要 Markdown，不要解释。格式必须是：
+{{
+  "location": "{location}",
+  "characters": {characters},
+  "shots": [
+    {{
+      "unit_id": "U001",
+      "shot_type": "中景",
+      "duration": 5,
+      "content": "中景，平视机位，..."
+    }}
+  ]
+}}
+
+硬性规则：
+1. shots 必须与输入 items 一一对应，unit_id 不能遗漏、不能重复、不能新增。
+2. 每个 shot.duration 默认等于对应 item.duration；如果本片段 items 总时长不足 5 秒，请只延长最后一个 shot.duration，使 shots 总时长达到 5 秒。
+3. shot_type 只能是“近景”“中景”“全景”。
+4. 本片段第一个分镜必须是“中景”或“全景”，拍摄位置必须是“平视”，能同时拍到这个片段中的所有人物，并描述所有人物站位。
+5. 每个 content 都必须包含拍摄位置：相机从什么角度拍摄，人物朝向在画面中怎样。
+6. 动作/台词必须保留原文，不要改写；可以在 content 中补充镜头调度，但原文必须完整出现。
+7. 场景空间必须严格遵守 scene_context 中的“内/外”。如果 scene_space 是“外”，所有镜头都必须是外景，不得写“室内、内景、房间内、帐篷内、营帐内、帐内”等内景表达；如果 scene_space 是“内”，不得写“室外、户外、露天、外景、帐外、门外”等外景表达。
+8. 风格参考：{style}。
+
+{retry_feedback}
+
+片段信息：
+scene_context: {scene_context}
+scene_time: {scene_time}
+scene_space: {scene_space}
+location: {location}
+characters: {characters}
+total_duration: {total_duration}
+items: {items}

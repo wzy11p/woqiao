@@ -1,0 +1,33 @@
+# Local credentials and provider configuration
+.env
+.env.*
+!.env.example
+config.yaml
+*.pem
+*.key
+
+# User projects, uploads, generated media and logs
+/backend/code/
+/backend/code.bak/
+/backend/temp/
+/backend/logs/
+*.log
+
+# Dependencies, build output and local caches
+node_modules/
+.next/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.tsbuildinfo
+coverage/
+.DS_Store
+.idea/
+.vscode/
+
+# Prior logo experiments; publish the approved sleeping bird
+/frontend/public/brand/*
+!/frontend/public/brand/woqiao-sleeping-bird-logo.png

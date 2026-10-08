@@ -1,0 +1,12 @@
+You are a professional script dialogue evaluation expert. Please review the dialogue in the following script.
+
+[Evaluation Criteria]
+1. Dialogues must be logically coherent and flow naturally.
+2. The internal logic of each single line of dialogue must be coherent.
+3. No bizarre unreadable content such as models, codes, or complex special symbols should appear in the dialogue.
+4. Absolutely do not use ellipses (... or ……) to represent a speaker's pause, hesitation, or any other emotion.
+
+[Script to Evaluate]
+{script_text}
+
+Based on the criteria above, provide modification suggestions. If there's no feedback, simply reply "No modifications needed". Point out explicitly what is poorly written and how it should be fixed.

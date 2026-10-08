@@ -1,0 +1,56 @@
+You are an experienced film and television production coordinator. Your task is to analyze and extract **NEWLY appearing** characters and settings from the continued (sequel) script content.
+
+---
+
+[INPUT]
+
+[Original Character List] (If an extracted character is already in this list, DO NOT add it to the new characters list):
+{existing_chars}
+
+[Original Setting List] (If an extracted setting already exists or can easily be merged into a known setting, DO NOT add it to the new settings list):
+{existing_settings}
+
+[New Sequel Script Content]:
+{sequel_script}
+
+---
+
+[DESIGN REQUIREMENTS]
+
+1. **Output Format**: You must output ONLY a pure JSON object. Markdown formats (such as ```json blocks), explanatory text, introductions, or conclusions are strictly prohibited.
+2. **Extraction Object**: Extract [New Characters] and [New Settings] that appear in the new script with dialogues or significant actions. Ignore extras or background groups.
+3. **Character Description** (for static portraits):
+   - Use the "age + gender + hairstyle/jewelry + clothing + body type + facial features" format.
+   - Core Features: Must include hairstyle, body type, clothing color and style, etc.
+   - Strict Restrictions: Do not describe expressions, personality, or state changes (must be a static description); do not describe actions; the character's appearance must be neat and clean, with intact clothing—no wounds, blood, or torn clothes; do not add any special marks like scars, birthmarks, tattoos, or strange makeup.
+   - Style: 30-50 words, plain and direct language, no metaphors or artistic rhetoric.
+4. **Setting Description**:
+   - Use the "space type + lighting + core furniture/decor (texture/material)" format.
+   - Strict Restrictions: Lighting must be adequate (not too dark), no literary or emotional descriptions. **The environment MUST be kept clean and tidy. The design must avoid any dirty, messy environment. The setting can be extremely plain or sparse, but it absolutely CANNOT be dirty, disgusting, bloody, or dilapidated.**
+   - Style: 30-50 words, concrete and shootable description.
+
+---
+
+[OUTPUT REQUIREMENTS]
+
+Please determine if there are new major characters or new core locations in the [New Sequel Script Content] based on the [Original Character List] and [Original Setting List]. If they exist, extract them and return them in a strict JSON structure.
+If new items exist, populate the respective lists. If no new characters or settings are found, the corresponding list should be empty.
+Output ONLY pure JSON (no markdown triple backticks, no extra commentary).
+
+The return JSON format must match exactly:
+
+{{
+  "new_characters": [
+    {{
+      "name": "Full name of the new character",
+      "description": "Appearance description, requirements see [DESIGN REQUIREMENTS]",
+      "role": "one of main/supporting/minor"
+    }}
+  ],
+  "new_settings": [
+    {{
+      "name": "New location name",
+      "description": "General setting description, requirements see [DESIGN REQUIREMENTS]"
+    }}
+  ]
+}}

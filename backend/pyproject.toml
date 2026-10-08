@@ -1,0 +1,55 @@
+[project]
+name = "xiaoyunque-backend"
+version = "0.1.0"
+description = "FastAPI backend for WoQiao, a local AI short-video workspace derived from XiaoYunQue"
+authors = [
+    {name = "HITsz-TMG"}
+]
+readme = "../README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "pydantic>=2.0.0",
+    "python-multipart>=0.0.6",
+    "PyYAML>=6.0.0",
+    "requests>=2.28.0",
+    "httpx>=0.24.0",
+    "Pillow>=10.0.0",
+    "playwright>=1.51.0",
+    "python-docx>=1.1.0",
+    "PyPDF2",
+    "numpy>=1.24.0",
+    "openai>=1.0.0",
+    "dashscope>=1.10.0",
+    "PyJWT>=2.8.0",
+    "edge-tts==7.2.7",
+    "certifi>=2025.10.5",
+    "imageio-ffmpeg==0.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.6.0",
+]
+
+[project.scripts]
+xiaoyunque-api = "api_server:main"
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

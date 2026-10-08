@@ -1,0 +1,723 @@
+@import "tailwindcss";
+
+:root {
+    /* Primitive tokens: only this file should reference these directly. */
+    --color-white: #ffffff;
+    --color-gray-25: #fcfcfc;
+    --color-gray-50: #fafafa;
+    --color-gray-100: #f8f8f8;
+    --color-gray-175: #f3f3f3;
+    --color-gray-200: #eeeeee;
+    --color-gray-300: #d1d5db;
+    --color-gray-450: #737373;
+    --color-gray-500: #999999;
+    --color-gray-600: #666666;
+    --color-black-soft: #191919;
+    --color-black-a4: rgba(25, 25, 25, 0.04);
+    --color-black-a6: rgba(25, 25, 25, 0.06);
+    --color-black-a8: rgba(25, 25, 25, 0.08);
+    --color-black-a10: rgba(25, 25, 25, 0.1);
+    --color-black-a15: rgba(25, 25, 25, 0.15);
+    --color-shadow-black-a8: rgba(0, 0, 0, 0.08);
+    --color-scrim-black-a50: rgba(0, 0, 0, 0.5);
+    --color-red-500: #f53f3f;
+    --color-red-400: #f76560;
+    --color-red-700: #cb272d;
+    --color-red-a10: rgba(245, 63, 63, 0.1);
+    --radius-6: 6px;
+    --radius-8: 8px;
+    --radius-12: 12px;
+    --radius-16: 16px;
+    --radius-20: 20px;
+    --radius-pill: 9999px;
+
+    /* Semantic tokens used by the XiaoYunQue application surfaces. */
+    --background: var(--color-gray-25);
+    --foreground: var(--color-black-soft);
+    --font-app: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", system-ui, "Segoe UI", "Microsoft YaHei", sans-serif;
+    --lp-canvas-app: var(--color-gray-25);
+    --lp-surface: var(--color-white);
+    --lp-surface-subtle: var(--color-gray-100);
+    --lp-surface-soft: var(--color-gray-175);
+    --lp-text-strong: var(--color-black-soft);
+    --lp-text-default: var(--color-black-soft);
+    --lp-text-inverse: var(--color-white);
+    --lp-text-muted: var(--color-gray-600);
+    --lp-text-subtle: var(--color-gray-450);
+    --lp-text-disabled: var(--color-gray-500);
+    --lp-action-primary: var(--color-black-soft);
+    --lp-accent: var(--lp-action-primary);
+    --lp-accent-soft: var(--color-black-a6);
+    --lp-error: var(--color-red-500);
+    --lp-error-hover: var(--color-red-400);
+    --lp-error-active: var(--color-red-700);
+    --lp-error-soft: var(--color-red-a10);
+    --lp-border-subtle: var(--color-gray-200);
+    --lp-border-divider: var(--color-gray-200);
+    --lp-border-strong: var(--color-gray-300);
+    --lp-surface-hover: var(--color-black-a4);
+    --lp-surface-active: var(--color-black-a6);
+    --lp-surface-strong: var(--color-black-a10);
+    --lp-border-medium: var(--color-black-a15);
+    --lp-shadow-raised: 0 1px 2px var(--color-black-a8);
+    --lp-shadow-card-hover: 0 8px 20px var(--color-black-a8);
+    --lp-shadow-popover: 0 8px 24px var(--color-shadow-black-a8);
+    --lp-shadow-modal: 0 20px 40px var(--color-shadow-black-a8);
+    --lp-scrim-modal: var(--color-scrim-black-a50);
+    --lp-radius-tag: var(--radius-6);
+    --lp-radius-compact: var(--radius-8);
+    --lp-radius-control: var(--radius-12);
+    --lp-radius-card: var(--radius-16);
+    --lp-radius-feature: var(--radius-20);
+    --lp-radius-pill: var(--radius-pill);
+    --lp-opacity-disabled: 0.4;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-ds-bg: var(--lp-canvas-app);
+    --color-ds-sidebar: var(--lp-surface);
+    --color-ds-input: var(--lp-border-subtle);
+    --color-ds-input-bg: var(--lp-surface);
+    --color-ds-text: var(--lp-text-default);
+    --color-ds-hover: var(--lp-surface-hover);
+    --color-ds-blue: var(--lp-accent);
+}
+
+html,
+body {
+    min-height: 100%;
+    background: var(--lp-canvas-app);
+}
+
+body {
+    color: var(--lp-text-default);
+    font-family: var(--font-app);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--lp-radius-pill);
+    background: var(--lp-border-strong);
+}
+
+/* Application shell */
+.xyq-shell {
+    position: relative;
+    min-height: 100vh;
+    background: var(--lp-canvas-app) !important;
+    color: var(--lp-text-default);
+}
+
+.xyq-shell::before,
+.xyq-shell::after,
+.xyq-home::before {
+    content: none;
+}
+
+.xyq-sidebar {
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    height: auto;
+    overflow: hidden;
+    border: 0 !important;
+    border-right: 1px solid var(--lp-border-subtle) !important;
+    border-radius: 0;
+    background: var(--lp-surface) !important;
+    box-shadow: none !important;
+}
+
+.xyq-sidebar-brand {
+    height: 72px !important;
+    padding-inline: 24px !important;
+    border-bottom-color: transparent !important;
+}
+
+.xyq-sidebar-brand span {
+    color: var(--lp-text-strong) !important;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.xyq-sidebar-nav {
+    padding: 8px 12px 16px !important;
+}
+
+.xyq-sidebar-link {
+    min-height: 44px;
+    padding-inline: 12px !important;
+    border-radius: var(--lp-radius-control) !important;
+    color: var(--lp-text-muted) !important;
+    font-size: 14px;
+    font-weight: 400 !important;
+}
+
+.xyq-sidebar-link:hover {
+    background: var(--lp-surface-hover) !important;
+    color: var(--lp-text-strong) !important;
+}
+
+.xyq-sidebar-link.bg-blue-50 {
+    background: var(--lp-surface-soft) !important;
+    color: var(--lp-text-strong) !important;
+    font-weight: 500 !important;
+}
+
+.xyq-task-panel {
+    min-height: 144px;
+    padding: 16px !important;
+    border-top: 1px solid var(--lp-border-divider) !important;
+}
+
+.xyq-task-panel > div:first-child span {
+    color: var(--lp-text-muted) !important;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.xyq-task-panel > div:last-child > div:not(.space-y-1\.5) {
+    border-color: transparent !important;
+    background: var(--lp-surface-subtle);
+    color: var(--lp-text-subtle) !important;
+}
+
+.xyq-task-item {
+    border-color: transparent !important;
+    border-radius: var(--lp-radius-compact) !important;
+    background: transparent !important;
+}
+
+.xyq-task-item:hover {
+    border-color: transparent !important;
+    background: var(--lp-surface-hover) !important;
+}
+
+.xyq-task-panel .bg-blue-500 {
+    background: var(--lp-accent) !important;
+}
+
+.xyq-task-panel .text-blue-600 {
+    color: var(--lp-accent) !important;
+}
+
+.xyq-sidebar-footer {
+    border-top-color: var(--lp-border-divider) !important;
+    padding: 12px !important;
+}
+
+.xyq-sidebar-footer > button {
+    min-height: 44px;
+    border-radius: var(--lp-radius-control) !important;
+    color: var(--lp-text-muted) !important;
+    font-weight: 400 !important;
+}
+
+.xyq-sidebar-footer > button:hover {
+    background: var(--lp-surface-hover) !important;
+    color: var(--lp-text-strong) !important;
+}
+
+.xyq-sidebar-footer > button.bg-blue-50 {
+    background: var(--lp-surface-soft) !important;
+    color: var(--lp-text-strong) !important;
+    font-weight: 500 !important;
+}
+
+.xyq-settings-menu {
+    padding: 6px !important;
+    border-color: var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-control) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: var(--lp-shadow-popover) !important;
+}
+
+.xyq-settings-menu button {
+    border-radius: var(--lp-radius-compact) !important;
+    color: var(--lp-text-default) !important;
+    font-weight: 400 !important;
+}
+
+.xyq-settings-menu button:hover {
+    background: var(--lp-surface-hover) !important;
+    color: var(--lp-text-strong) !important;
+}
+
+.xyq-sidebar-toggle,
+.xyq-sidebar + button {
+    width: 28px !important;
+    height: 44px !important;
+    border-color: var(--lp-border-subtle) !important;
+    border-radius: 0 var(--lp-radius-control) var(--lp-radius-control) 0 !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-subtle) !important;
+    box-shadow: none !important;
+}
+
+.xyq-sidebar-toggle:hover,
+.xyq-sidebar + button:hover {
+    width: 28px !important;
+    border-color: var(--lp-border-strong) !important;
+    background: var(--lp-surface-subtle) !important;
+    color: var(--lp-text-strong) !important;
+}
+
+.xyq-main {
+    position: relative;
+    min-height: 100vh;
+    background: var(--lp-canvas-app);
+}
+
+.xyq-shell header {
+    top: 0;
+    right: 0;
+    left: var(--app-sidebar-width);
+    border: 0;
+    border-bottom: 1px solid var(--lp-border-divider);
+    border-radius: 0;
+    background: var(--lp-surface);
+    box-shadow: none;
+}
+
+.xyq-topbar-home,
+.xyq-topbar-home + div {
+    display: none !important;
+}
+
+/* Home workspace */
+.xyq-home {
+    position: relative;
+    min-height: 100vh;
+    background: var(--lp-canvas-app) !important;
+}
+
+.xyq-home-main {
+    max-width: 1040px !important;
+    padding: 72px 32px 40px !important;
+}
+
+.xyq-hero-title {
+    margin-bottom: 32px !important;
+    text-align: left !important;
+}
+
+.xyq-hero-title > div {
+    margin-bottom: 8px !important;
+}
+
+.xyq-hero-title h1 {
+    color: var(--lp-text-strong) !important;
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.xyq-hero-title p {
+    color: var(--lp-text-muted) !important;
+    font-size: 14px !important;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.xyq-composer {
+    min-height: 188px;
+    margin-bottom: 48px !important;
+    padding: 20px !important;
+    border: 1px solid var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-card) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: none !important;
+    transition: border-color 120ms ease;
+}
+
+.xyq-composer:focus-within {
+    border-color: var(--lp-border-strong) !important;
+}
+
+.xyq-prompt-input {
+    min-height: 88px !important;
+    padding: 0;
+    color: var(--lp-text-default) !important;
+    font-family: var(--font-app);
+    font-size: 16px !important;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.xyq-prompt-input::placeholder {
+    color: var(--lp-text-subtle) !important;
+}
+
+.xyq-composer-toolbar {
+    gap: 16px;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--lp-border-divider) !important;
+}
+
+.xyq-composer-toolbar > div {
+    flex-wrap: wrap;
+}
+
+.xyq-tool-button {
+    min-height: 32px;
+    padding: 6px 12px !important;
+    border: 1px solid var(--lp-border-subtle);
+    border-radius: var(--lp-radius-pill) !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-muted) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+}
+
+.xyq-tool-button:hover {
+    border-color: var(--lp-border-strong);
+    background: var(--lp-surface-hover) !important;
+    color: var(--lp-text-strong) !important;
+}
+
+.xyq-tool-button.bg-blue-50 {
+    border-color: var(--lp-action-primary);
+    background: var(--lp-action-primary) !important;
+    color: var(--lp-text-inverse) !important;
+}
+
+.xyq-episodes-popover {
+    padding: 16px !important;
+    border-color: var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-control) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: var(--lp-shadow-popover) !important;
+}
+
+.xyq-episode-count {
+    border-radius: var(--lp-radius-tag) !important;
+    background: var(--lp-surface-soft) !important;
+    color: var(--lp-text-strong) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+}
+
+.xyq-upload-button,
+.xyq-action-secondary,
+.xyq-action-primary {
+    min-height: 40px;
+    padding-inline: 18px !important;
+    border-radius: var(--lp-radius-control) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+}
+
+.xyq-upload-button {
+    border: 1px solid var(--lp-border-subtle) !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-default) !important;
+    font-weight: 400 !important;
+}
+
+.xyq-upload-button:hover:not(:disabled) {
+    border-color: var(--lp-border-strong) !important;
+    background: var(--lp-surface-hover) !important;
+}
+
+.xyq-action-secondary:not(:disabled) {
+    border: 1px solid var(--lp-border-subtle) !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-default) !important;
+}
+
+.xyq-action-secondary:hover:not(:disabled) {
+    border-color: var(--lp-border-strong) !important;
+    background: var(--lp-surface-hover) !important;
+}
+
+.xyq-action-primary:not(:disabled) {
+    min-width: 104px;
+    border: 1px solid var(--lp-action-primary) !important;
+    background: var(--lp-action-primary) !important;
+    color: var(--lp-text-inverse) !important;
+}
+
+.xyq-action-primary:hover:not(:disabled) {
+    opacity: 0.86;
+}
+
+.xyq-upload-button:disabled,
+.xyq-action-secondary:disabled,
+.xyq-action-primary:disabled {
+    border-color: transparent !important;
+    background: var(--lp-surface-soft) !important;
+    color: var(--lp-text-disabled) !important;
+    opacity: var(--lp-opacity-disabled);
+}
+
+.xyq-generation-panel {
+    padding: 20px !important;
+    border: 1px solid var(--lp-border-subtle);
+    border-radius: var(--lp-radius-card) !important;
+    background: var(--lp-surface-subtle) !important;
+    color: var(--lp-text-default);
+}
+
+.xyq-generation-panel label > span,
+.xyq-generation-panel > div > div > span {
+    color: var(--lp-text-muted) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+}
+
+.xyq-generation-panel select {
+    min-height: 40px;
+    padding: 8px 12px !important;
+    border: 1px solid var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-control) !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-default) !important;
+    font-family: var(--font-app);
+    font-size: 14px;
+}
+
+.xyq-generation-panel select:focus {
+    border-color: var(--lp-border-strong) !important;
+}
+
+.xyq-generation-panel button {
+    border-color: var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-control) !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-default) !important;
+}
+
+.xyq-generation-panel button.border-indigo-500 {
+    border-color: var(--lp-accent) !important;
+    background: var(--lp-accent-soft) !important;
+}
+
+.xyq-inspiration {
+    margin-bottom: 56px !important;
+}
+
+.xyq-inspiration h3 {
+    margin-bottom: 16px !important;
+    color: var(--lp-text-strong) !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.xyq-inspiration-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px !important;
+}
+
+.xyq-inspiration-card {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 !important;
+    border: 1px solid var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-card) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: none !important;
+    transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.xyq-inspiration-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--lp-border-strong) !important;
+    box-shadow: var(--lp-shadow-card-hover) !important;
+}
+
+.xyq-inspiration-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-position: center;
+    background-size: cover;
+}
+
+.xyq-inspiration-copy {
+    padding: 16px;
+    background: var(--lp-surface);
+}
+
+.xyq-inspiration-copy > div:first-child {
+    margin-bottom: 4px !important;
+    color: var(--lp-text-strong) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.5;
+}
+
+.xyq-inspiration-copy > div:last-child {
+    color: var(--lp-text-muted) !important;
+    font-size: 12px !important;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.xyq-history {
+    max-width: 1040px !important;
+    padding-inline: 32px !important;
+}
+
+.xyq-history-card {
+    border-color: var(--lp-border-subtle) !important;
+    border-radius: var(--lp-radius-card) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: none !important;
+}
+
+.xyq-history-card:hover {
+    border-color: var(--lp-border-strong) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: none !important;
+}
+
+.xyq-history-card .group-hover\:text-blue-600 {
+    color: var(--lp-text-strong) !important;
+}
+
+.xyq-history-card .text-blue-600,
+.xyq-history-card .group-hover\:text-blue-400 {
+    color: var(--lp-accent) !important;
+}
+
+.xyq-dialog-scrim {
+    background: var(--lp-scrim-modal) !important;
+}
+
+.xyq-delete-dialog {
+    width: min(400px, calc(100vw - 32px)) !important;
+    padding: 32px !important;
+    border-radius: var(--lp-radius-feature) !important;
+    background: var(--lp-surface) !important;
+    box-shadow: var(--lp-shadow-modal) !important;
+}
+
+.xyq-delete-dialog h4 {
+    color: var(--lp-text-strong) !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+
+.xyq-delete-dialog p {
+    color: var(--lp-text-muted) !important;
+    font-size: 14px !important;
+    line-height: 1.6;
+}
+
+.xyq-delete-dialog button {
+    min-height: 44px;
+    border-radius: var(--lp-radius-control) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.xyq-delete-dialog button:first-child {
+    border-color: var(--lp-border-subtle) !important;
+    background: var(--lp-surface) !important;
+    color: var(--lp-text-default) !important;
+}
+
+.xyq-delete-dialog button:first-child:hover {
+    border-color: var(--lp-border-strong) !important;
+    background: var(--lp-surface-hover) !important;
+}
+
+.xyq-delete-dialog button:last-child {
+    background: var(--lp-error) !important;
+    color: var(--lp-text-inverse) !important;
+}
+
+.xyq-delete-dialog button:last-child:hover {
+    background: var(--lp-error-hover) !important;
+}
+
+@media (max-width: 1103px) {
+    .xyq-main {
+        margin-left: 0 !important;
+    }
+
+    .xyq-sidebar {
+        box-shadow: var(--lp-shadow-popover) !important;
+    }
+
+    .xyq-home-main,
+    .xyq-history {
+        max-width: 920px !important;
+    }
+
+    .xyq-inspiration-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .xyq-composer-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .xyq-composer-toolbar > div:last-child {
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .xyq-sidebar {
+        width: min(var(--app-sidebar-width), calc(100vw - 16px)) !important;
+    }
+
+    .xyq-home-main,
+    .xyq-history {
+        padding-inline: 16px !important;
+    }
+
+    .xyq-home-main {
+        padding-top: 48px !important;
+    }
+
+    .xyq-hero-title h1 {
+        font-size: 24px !important;
+    }
+
+    .xyq-inspiration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .xyq-composer {
+        border-radius: var(--lp-radius-card) !important;
+    }
+
+    .xyq-upload-button,
+    .xyq-action-secondary,
+    .xyq-action-primary {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

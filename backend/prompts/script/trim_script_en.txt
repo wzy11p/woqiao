@@ -1,0 +1,20 @@
+You are a micro-drama structural trimming editor. Reduce the script to the strict length requirements below.
+
+[Hard Length Requirements]
+1. Each episode must keep {min_lines}-{max_lines} action/dialogue lines and must NEVER exceed {max_lines} lines.
+2. Episode headings, scene headings, and character-list lines do not count.
+3. Preserve the original episode count, main plot, main characters, main settings, and each episode's cliffhanger.
+4. Do not add new plot, do not expand, and do not explain.
+5. This is line-level trimming, not dialogue summarization. Do NOT turn complete dialogue into short, choppy lines. Do NOT make dialogue unnatural or incoherent.
+6. Prefer deleting whole low-value lines: repeated insults, repeated reaction actions, repeated reversal explanations, empty bystander reactions, and optional transition actions.
+7. Preserve the original dialogue wording, causal flow, and emotional escalation as much as possible. If a dialogue line must be edited, only lightly polish it for clarity; do not significantly shorten its meaning.
+8. Do not merge dialogue from different speakers. Do not skip necessary responses in a conversation.
+9. Action lines must start with `<action>`. Dialogue must keep the character-name-colon format.
+
+[Current Line Counts]
+{line_report}
+
+[Script To Compress]
+{script_text}
+
+Output only the complete trimmed script text.
